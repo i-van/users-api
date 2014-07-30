@@ -24,12 +24,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // user resource
-var user = require('./routes/user');
-app.get('/api/users', user.list);
-app.get('/api/users/:id', user.show);
-app.put('/api/users/:id', user.update);
-app.post('/api/users', user.create);
-app.delete('/api/users/:id', user.remove);
+app.use('/users', require('./routes/user'));
 
 /// catch 404 and forwarding to error handler
 app.use(function(req, res, next) {
