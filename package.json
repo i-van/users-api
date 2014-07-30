@@ -1,23 +1,16 @@
 {
-  "name": "application-name",
+  "name": "users-api",
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node app.js",
-    "postinstall": "./node_modules/.bin/bower install && ./node_modules/.bin/grunt"
+    "start": "node app.js"
   },
   "main": "app.js",
   "dependencies": {
-    "express": "3.4.4",
-    "mongoose": "~3.6.20",
-    "async": "~0.2.9",
-    "jade": "~1.0.2",
-    "connect-assets": "~2.5.3",
-
-    "bower": "~1.2.8",
-    "grunt": "~0.4.2",
-    "grunt-cli": "~0.1.11",
-    "load-grunt-tasks": "~0.2.1",
-    "grunt-html2js": "~0.2.3"
+    "express": "4.5.1",
+    "morgan": "~1.1.1",
+    "body-parser": "~1.4.3",
+    "mongoose": "3.6.20",
+    "async": "0.2.9"
   }
 }
