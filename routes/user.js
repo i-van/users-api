@@ -7,8 +7,8 @@ var router = require('express').Router()
   , EditValidation = require('../forms/user/edit');
 
 router.get('/', function(req, res, next) {
-    var limit = req.param('limit') || 10
-      , page = +req.param('page') || 1;
+    var limit = +req.param('limit') || 10
+      , page  = +req.param('page') || 1;
 
     async.parallel({
         data: function(done) {
@@ -20,10 +20,10 @@ router.get('/', function(req, res, next) {
     }, function(err, results) {
         if (err) { return next(err) }
 
-        results.currentPage = page;
+        results.currentPage  = page;
         results.itemsPerPage = limit;
-        results.totalPages = Math.ceil(results.totalItems / limit);
-        res.json(results)
+        results.totalPages   = Math.ceil(results.totalItems / limit);
+        res.json(results);
     })
 });
 
