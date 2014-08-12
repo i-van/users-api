@@ -1,1 +1,1 @@
-web: NODE_ENV=production node app.js
+api: node app.js
