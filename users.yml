@@ -1,0 +1,150 @@
+resourcePath: /users
+description: Users API
+apis:
+
+- path: /users
+  operations:
+
+  - method: GET
+    summary: List of Users
+    notes: Returns list of users
+    type: User
+    nickname: find
+
+  - method: POST
+    summary: Create User
+    notes: Create new User
+    type: User
+    nickname: create
+    parameters:
+
+    - name: email
+      description: Email
+      required: true
+      type: string
+      paramType: form
+
+    - name: login
+      description: Login
+      required: true
+      type: string
+      paramType: form
+
+    - name: firstName
+      description: First Name
+      required: true
+      type: string
+      paramType: form
+
+    - name: lastName
+      description: Last Name
+      required: true
+      type: string
+      paramType: form
+
+    - name: password
+      description: Password
+      required: true
+      type: string
+      paramType: form
+
+    - name: passwordConfirmation
+      description: Password Confirmation
+      required: true
+      type: string
+      paramType: form
+
+- path: /users/{id}
+  operations:
+
+  - method: GET
+    summary: Show User
+    notes: Returns User
+    type: User
+    nickname: findById
+    parameters:
+
+    - name: id
+      description: Identifier
+      required: true
+      type: string
+      paramType: path
+
+  - method: PUT
+    summary: Update User
+    notes: Update User
+    type: User
+    nickname: update
+    parameters:
+
+    - name: id
+      description: Identifier
+      required: true
+      type: string
+      paramType: path
+
+    - name: email
+      description: Email
+      required: true
+      type: string
+      paramType: form
+
+    - name: login
+      description: Login
+      required: true
+      type: string
+      paramType: form
+
+    - name: firstName
+      description: First Name
+      required: true
+      type: string
+      paramType: form
+
+    - name: lastName
+      description: Last Name
+      required: true
+      type: string
+      paramType: form
+
+    - name: password
+      description: Password
+      required: false
+      type: string
+      paramType: form
+
+    - name: passwordConfirmation
+      description: Password Confirmation
+      required: false
+      type: string
+      paramType: form
+
+  - method: DELETE
+    summary: Delete User
+    notes: Delete User
+    type: User
+    nickname: remove
+    parameters:
+
+    - name: id
+      description: Identifier
+      required: true
+      type: string
+      paramType: path
+
+models:
+    User:
+      id: User
+      properties:
+        firstName:
+          type: String
+        lastName:
+          type: String
+        email:
+          type: String
+        login:
+          type: String
+        created:
+          type: Date
+        updated:
+          type: Date
