@@ -26,7 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(swagger.init(app, {
     apiVersion: '1.0',
     swaggerVersion: '1.2',
-    basePath: 'http://server:3000',
+    basePath: process.env.BASE_PATH || 'http://server:3000',
     swaggerURL: '/explorer',
     swaggerJSON: '/api-docs',
     swaggerUI: './public/explorer/',
