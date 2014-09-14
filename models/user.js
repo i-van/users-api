@@ -76,6 +76,21 @@ schema.methods = {
     encryptPassword: function(password) {
         if (!password) return '';
         return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
+    },
+
+    /**
+     * @returns {Object}
+     */
+    toJSON: function() {
+        return {
+            _id:       this._id,
+            email:     this.email,
+            login:     this.login,
+            firstName: this.firstName,
+            lastName:  this.lastName,
+            created:   +new Date(this.created),
+            updated:   +new Date(this.updated)
+        };
     }
 };
 
