@@ -12,6 +12,7 @@
     "body-parser": "~1.4.3",
     "mongoose": "3.6.20",
     "async": "0.2.9",
-    "validation": "https://github.com/i-van/node-validation/tarball/master"
+    "validation": "https://github.com/i-van/node-validation/tarball/master",
+    "swagger-express": "~1.0.5"
   }
 }
