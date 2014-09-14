@@ -35,9 +35,12 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.put('/:id', function(req, res, next) {
+    var data = req.body;
+    data._id = req.params.id;
+
     async.waterfall([
         function(next) {
-            (new EditValidation(req.body)).validate(next)
+            (new EditValidation(data)).validate(next)
         },
         function(errors, next) {
             if (errors.length) {
@@ -46,7 +49,7 @@ router.put('/:id', function(req, res, next) {
             User.findById(req.params.id, next)
         },
         function(user, next) {
-            user.set(req.body).save(next)
+            user.set(data).save(next)
         }
     ], function(err, user) {
         if (err) { return next(err) }
@@ -77,6 +80,9 @@ router.delete('/:id', function(req, res, next) {
             User.findById(req.params.id, done)
         },
         function(user, done) {
+            if (!user) {
+                return done('User not found')
+            }
             user.remove(done)
         }
     ], function(err) {
