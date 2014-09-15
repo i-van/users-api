@@ -83,7 +83,7 @@ schema.methods = {
      */
     toJSON: function() {
         return {
-            _id:       this._id,
+            id:        this._id,
             email:     this.email,
             login:     this.login,
             firstName: this.firstName,

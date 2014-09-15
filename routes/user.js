@@ -36,7 +36,7 @@ router.get('/:id', function(req, res, next) {
 
 router.put('/:id', function(req, res, next) {
     var data = req.body;
-    data._id = req.params.id;
+    data.id = req.params.id;
 
     async.waterfall([
         function(next) {
@@ -49,6 +49,9 @@ router.put('/:id', function(req, res, next) {
             User.findById(req.params.id, next)
         },
         function(user, next) {
+            if (!user) {
+                return next('User not found')
+            }
             user.set(data).save(next)
         }
     ], function(err, user) {
@@ -76,14 +79,14 @@ router.post('/', function(req, res, next) {
 
 router.delete('/:id', function(req, res, next) {
     async.waterfall([
-        function(done) {
-            User.findById(req.params.id, done)
+        function(next) {
+            User.findById(req.params.id, next)
         },
-        function(user, done) {
+        function(user, next) {
             if (!user) {
-                return done('User not found')
+                return next('User not found')
             }
-            user.remove(done)
+            user.remove(next)
         }
     ], function(err) {
         if (err) { return next(err) }

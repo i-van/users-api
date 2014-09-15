@@ -12,7 +12,7 @@ module.exports = UserCreateValidation.extend({
         this.add('login', validators.notEmpty, 'Login is required', true);
         this.add(
             'login',
-            validators.noRecordExists('User', { login: this.values.login, _id: { $ne: this.values._id } }),
+            validators.noRecordExists('User', { login: this.values.login, _id: { $ne: this.values.id } }),
             'Such User has been already registered'
         )
     }
